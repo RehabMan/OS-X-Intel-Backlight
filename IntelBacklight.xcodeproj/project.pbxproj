@@ -1,0 +1,335 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		71958FDA1417F6AB00A9E81D /* Debug.h in Headers */ = {isa = PBXBuildFile; fileRef = 71958FD91417F6AB00A9E81D /* Debug.h */; };
+		71958FE314181ACA00A9E81D /* IntelBacklight-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 71958FE214181ACA00A9E81D /* IntelBacklight-Prefix.pch */; };
+		8407B9261858EBB50011E5FB /* IntelBacklight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 71958FD11417F35100A9E81D /* IntelBacklight.cpp */; };
+		845411D31BABC19C00451943 /* BacklightHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 845411D21BABC19C00451943 /* BacklightHandler.cpp */; };
+		845411D51BABC20800451943 /* IntelBacklightHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 845411D41BABC20800451943 /* IntelBacklightHandler.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		71958FC41417F35100A9E81D /* IntelBacklight.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IntelBacklight.kext; sourceTree = BUILT_PRODUCTS_DIR; };
+		71958FC81417F35100A9E81D /* Kernel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kernel.framework; path = System/Library/Frameworks/Kernel.framework; sourceTree = SDKROOT; };
+		71958FCB1417F35100A9E81D /* IntelBacklight-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "IntelBacklight-Info.plist"; sourceTree = "<group>"; };
+		71958FCD1417F35100A9E81D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		71958FCF1417F35100A9E81D /* IntelBacklight.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntelBacklight.h; sourceTree = "<group>"; };
+		71958FD11417F35100A9E81D /* IntelBacklight.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = IntelBacklight.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
+		71958FD91417F6AB00A9E81D /* Debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Debug.h; sourceTree = "<group>"; };
+		71958FE214181ACA00A9E81D /* IntelBacklight-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "IntelBacklight-Prefix.pch"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		845411CF1BABBFA400451943 /* BacklightHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BacklightHandler.h; sourceTree = "<group>"; };
+		845411D01BABC05E00451943 /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
+		845411D11BABC0DB00451943 /* IntelBacklightHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntelBacklightHandler.h; sourceTree = "<group>"; };
+		845411D21BABC19C00451943 /* BacklightHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BacklightHandler.cpp; sourceTree = "<group>"; };
+		845411D41BABC20800451943 /* IntelBacklightHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IntelBacklightHandler.cpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		71958FBF1417F35100A9E81D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		71958FB71417F35100A9E81D = {
+			isa = PBXGroup;
+			children = (
+				71958FC91417F35100A9E81D /* IntelBacklight */,
+				71958FC61417F35100A9E81D /* Frameworks */,
+				71958FC51417F35100A9E81D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		71958FC51417F35100A9E81D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				71958FC41417F35100A9E81D /* IntelBacklight.kext */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		71958FC61417F35100A9E81D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				71958FC71417F35100A9E81D /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		71958FC71417F35100A9E81D /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				71958FC81417F35100A9E81D /* Kernel.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		71958FC91417F35100A9E81D /* IntelBacklight */ = {
+			isa = PBXGroup;
+			children = (
+				71958FCF1417F35100A9E81D /* IntelBacklight.h */,
+				71958FD11417F35100A9E81D /* IntelBacklight.cpp */,
+				845411CF1BABBFA400451943 /* BacklightHandler.h */,
+				845411D21BABC19C00451943 /* BacklightHandler.cpp */,
+				845411D11BABC0DB00451943 /* IntelBacklightHandler.h */,
+				845411D41BABC20800451943 /* IntelBacklightHandler.cpp */,
+				845411D01BABC05E00451943 /* Common.h */,
+				71958FD91417F6AB00A9E81D /* Debug.h */,
+				71958FCA1417F35100A9E81D /* Supporting Files */,
+			);
+			path = IntelBacklight;
+			sourceTree = "<group>";
+		};
+		71958FCA1417F35100A9E81D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				71958FCB1417F35100A9E81D /* IntelBacklight-Info.plist */,
+				71958FE214181ACA00A9E81D /* IntelBacklight-Prefix.pch */,
+				71958FCC1417F35100A9E81D /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		71958FC01417F35100A9E81D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				71958FDA1417F6AB00A9E81D /* Debug.h in Headers */,
+				71958FE314181ACA00A9E81D /* IntelBacklight-Prefix.pch in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		71958FC31417F35100A9E81D /* IntelBacklight */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 71958FD61417F35100A9E81D /* Build configuration list for PBXNativeTarget "IntelBacklight" */;
+			buildPhases = (
+				71958FBE1417F35100A9E81D /* Sources */,
+				71958FBF1417F35100A9E81D /* Frameworks */,
+				71958FC01417F35100A9E81D /* Headers */,
+				71958FC11417F35100A9E81D /* Resources */,
+				71958FC21417F35100A9E81D /* Rez */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IntelBacklight;
+			productName = IntelBacklight;
+			productReference = 71958FC41417F35100A9E81D /* IntelBacklight.kext */;
+			productType = "com.apple.product-type.kernel-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		71958FB91417F35100A9E81D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+			};
+			buildConfigurationList = 71958FBC1417F35100A9E81D /* Build configuration list for PBXProject "IntelBacklight" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 71958FB71417F35100A9E81D;
+			productRefGroup = 71958FC51417F35100A9E81D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				71958FC31417F35100A9E81D /* IntelBacklight */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		71958FC11417F35100A9E81D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXRezBuildPhase section */
+		71958FC21417F35100A9E81D /* Rez */ = {
+			isa = PBXRezBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXRezBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		71958FBE1417F35100A9E81D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				845411D51BABC20800451943 /* IntelBacklightHandler.cpp in Sources */,
+				845411D31BABC19C00451943 /* BacklightHandler.cpp in Sources */,
+				8407B9261858EBB50011E5FB /* IntelBacklight.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		71958FCC1417F35100A9E81D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				71958FCD1417F35100A9E81D /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		71958FD41417F35100A9E81D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEPLOYMENT_POSTPROCESSING = YES;
+				GCC_ENABLE_KERNEL_DEVELOPMENT = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"LOGNAME=\\\"${LOGNAME}\\\"",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				"LLVM_LTO[arch=x86_64]" = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MODULE_VERSION = 1.0.0d1;
+				OTHER_CFLAGS = "-fno-stack-protector";
+				"OTHER_LDFLAGS[arch=x86_64]" = "-dead_strip";
+				SDKROOT = macosx10.8;
+				STRIP_STYLE = "non-global";
+				SYMROOT = build/Products;
+			};
+			name = Debug;
+		};
+		71958FD51417F35100A9E81D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEPLOYMENT_POSTPROCESSING = YES;
+				GCC_ENABLE_KERNEL_DEVELOPMENT = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"LOGNAME=\\\"${LOGNAME}\\\"",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				"LLVM_LTO[arch=x86_64]" = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MODULE_VERSION = 1.0.0d1;
+				OTHER_CFLAGS = "-fno-stack-protector";
+				"OTHER_LDFLAGS[arch=x86_64]" = "-dead_strip";
+				SDKROOT = macosx10.8;
+				STRIP_STYLE = "non-global";
+				SYMROOT = build/Products;
+			};
+			name = Release;
+		};
+		71958FD71417F35100A9E81D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "IntelBacklight/IntelBacklight-Prefix.pch";
+				INFOPLIST_FILE = "IntelBacklight/IntelBacklight-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MODULE_NAME = com.darwin.driver.IntelBacklight;
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		71958FD81417F35100A9E81D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "IntelBacklight/IntelBacklight-Prefix.pch";
+				INFOPLIST_FILE = "IntelBacklight/IntelBacklight-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MODULE_NAME = com.darwin.driver.IntelBacklight;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		71958FBC1417F35100A9E81D /* Build configuration list for PBXProject "IntelBacklight" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				71958FD41417F35100A9E81D /* Debug */,
+				71958FD51417F35100A9E81D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		71958FD61417F35100A9E81D /* Build configuration list for PBXNativeTarget "IntelBacklight" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				71958FD71417F35100A9E81D /* Debug */,
+				71958FD81417F35100A9E81D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 71958FB91417F35100A9E81D /* Project object */;
+}
