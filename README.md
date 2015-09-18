@@ -15,6 +15,13 @@ Downloads are available on bitbucket:
 https://bitbucket.org/RehabMan/os-x-intel-backlight/downloads
 
 
+### Feedback:
+
+Please use this thread on tonymacx86.com for feedback, questions, and help:
+
+http://www.tonymacx86.com/el-capitan-laptop-support/172743-new-brightness-kext-intelbacklight-kext.html
+
+
 ### Customization
 
 The kext has default properties and backlight levels that will work on most Intel graphics devices (on those laptops that use the Intel IGPU PWM backlight controls).
@@ -154,13 +161,6 @@ The source code is maintained at the following sites:
 https://github.com/RehabMan/OS-X-Intel-Backlight
 
 https://bitbucket.org/RehabMan/os-x-intel-backlight
-
-
-### Feedback:
-
-Please use this thread on tonymacx86.com for feedback, questions, and help:
-
-TBD
 
 
 ### Known issues:
