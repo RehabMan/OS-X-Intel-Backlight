@@ -28,6 +28,8 @@
 		845411D11BABC0DB00451943 /* IntelBacklightHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntelBacklightHandler.h; sourceTree = "<group>"; };
 		845411D21BABC19C00451943 /* BacklightHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BacklightHandler.cpp; sourceTree = "<group>"; };
 		845411D41BABC20800451943 /* IntelBacklightHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IntelBacklightHandler.cpp; sourceTree = "<group>"; };
+		ED4741331BB47EA700C9FBB7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		ED4741351BB47EB100C9FBB7 /* makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = makefile; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +46,8 @@
 		71958FB71417F35100A9E81D = {
 			isa = PBXGroup;
 			children = (
+				ED4741331BB47EA700C9FBB7 /* README.md */,
+				ED4741351BB47EB100C9FBB7 /* makefile */,
 				71958FC91417F35100A9E81D /* IntelBacklight */,
 				71958FC61417F35100A9E81D /* Frameworks */,
 				71958FC51417F35100A9E81D /* Products */,

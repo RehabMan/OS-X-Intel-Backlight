@@ -156,8 +156,8 @@ void IntelBacklightHandler2::initBacklight(BacklightConfig* config)
         case kFBTypeIvySandy:
         {
             // gather current settings from PWM hardware
-            if (!m_config->m_pchInit)
-                m_config->m_pchInit = m_pchl;
+            if (!m_config->m_pchlInit)
+                m_config->m_pchlInit = m_pchl;
             if (!m_config->m_pwmMax)
                 m_config->m_pwmMax = m_levx>>16;
             if (!m_config->m_pwmMax)
@@ -190,9 +190,11 @@ void IntelBacklightHandler2::initBacklight(BacklightConfig* config)
 
         case kFBTypeHaswellBroadwell:
         {
+            // Default value for m_pchlInit is 0xC0000000...
             // This 0xC value comes from looking what OS X initializes this
             // register to after display sleep (using ACPIDebug/ACPIPoller)
-            REG32_WRITE(LEVW, 0xC0000000);
+            if (m_config->m_pchlInit)
+                REG32_WRITE(LEVW, m_config->m_pchlInit);
             if (!m_config->m_pwmMax)
                 m_config->m_pwmMax = m_levx>>16;
             if (!m_config->m_pwmMax)
@@ -257,8 +259,8 @@ void IntelBacklightHandler2::setBacklightLevel(UInt32 level)
         case kFBTypeIvySandy:
         {
             // initialize for consistent backlight level before/after sleep\n
-            if (m_config->m_pchInit != -1 && REG32_READ(PCHL) != m_config->m_pchInit)
-                REG32_WRITE(PCHL, m_config->m_pchInit);
+            if (m_config->m_pchlInit != -1 && REG32_READ(PCHL) != m_config->m_pchlInit)
+                REG32_WRITE(PCHL, m_config->m_pchlInit);
             if (REG32_READ(LEVW) != 0x80000000)
                 REG32_WRITE(LEVW, 0x80000000);
             if (REG32_READ(LEVX) != m_config->m_pwmMax<<16)

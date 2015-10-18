@@ -97,8 +97,9 @@ private:
     PRIVATE UInt32 levelForValue(UInt32 value);
 
     PRIVATE IOReturn setPropertiesGated(OSObject* props);
-    PRIVATE OSDictionary* getConfigurationOverride(const char* method);
     PRIVATE bool loadConfiguration(OSDictionary* config);
+
+    PRIVATE OSDictionary* getConfigurationOverride(const char* method);
     PRIVATE OSObject* translateArray(OSArray* array);
     PRIVATE OSObject* translateEntry(OSObject* obj);
 };

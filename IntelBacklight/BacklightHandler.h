@@ -29,7 +29,8 @@
 struct BacklightConfig
 {
     UInt16 m_pwmMax;
-    UInt32 m_pchInit;
+    UInt32 m_pchlInit;
+    UInt32 m_levwInit;
     UInt32 m_options;
     UInt16 m_backlightMin;
     UInt16 m_backlightMax;

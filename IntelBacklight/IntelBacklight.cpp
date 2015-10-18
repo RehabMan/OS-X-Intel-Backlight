@@ -176,6 +176,8 @@ bool IntelBacklightPanel::start(IOService* provider)
     }
 #endif
 
+    IORecursiveLockLock(m_lock);
+
     // make the service available for clients like 'ioio' (and backlight handler!)
     registerService();
 
@@ -190,6 +192,7 @@ bool IntelBacklightPanel::start(IOService* provider)
     {
         AlwaysLog("backlight handler never showed up.\n");
         stop(provider);
+        IORecursiveLockUnlock(m_lock);
         return false;
     }
 
@@ -217,6 +220,8 @@ bool IntelBacklightPanel::start(IOService* provider)
         setBrightnessLevelSmooth(value);
     }
     m_saved_value = m_committed_value;
+
+    IORecursiveLockUnlock(m_lock);
 
 	return true;
 }
@@ -282,7 +287,8 @@ bool IntelBacklightPanel::loadConfiguration(OSDictionary* config)
 {
     // simple params
     m_config.m_pwmMax = getConfigInteger32(config, "PWMMax");
-    m_config.m_pchInit = getConfigInteger32(config, "PCHLInit");
+    m_config.m_pchlInit = getConfigInteger32(config, "PCHLInit");
+    m_config.m_levwInit = getConfigInteger32(config, "LEVWInit");
     m_config.m_options = getConfigInteger32(config, "Options");
     m_config.m_backlightMin = getConfigInteger32(config, "BacklightMin");
     m_config.m_backlightMax = getConfigInteger32(config, "BacklightMax");
@@ -511,6 +517,8 @@ bool IntelBacklightPanel::setDisplay(IODisplay* display)
 {    
     DebugLog("%s::%s()\n", this->getName(), __FUNCTION__);
 
+    IORecursiveLockLock(m_lock);
+
     // retain new display (also allow setting to same instance as previous)
     if (display)
         display->retain();
@@ -524,11 +532,18 @@ bool IntelBacklightPanel::setDisplay(IODisplay* display)
         // update brightness levels
         doUpdate();
     }
+
+    IORecursiveLockUnlock(m_lock);
+
     return true;
 }
 
 bool IntelBacklightPanel::doIntegerSet(OSDictionary* params, const OSSymbol* paramName, UInt32 value)
 {
+    bool result = true;
+
+    IORecursiveLockLock(m_lock);
+
     //DebugLog("%s::%s(\"%s\", %d)\n", this->getName(), __FUNCTION__, paramName->getCStringNoCopy(), value);
     if ( gIODisplayBrightnessKey->isEqualTo(paramName))
     {   
@@ -549,13 +564,15 @@ bool IntelBacklightPanel::doIntegerSet(OSDictionary* params, const OSSymbol* par
         if (0xFF == value)
         {
             setBrightnessLevelSmooth(m_saved_value);
-            return false;
+            result = false;
         }
         //REVIEW: end workaround...
-        setBrightnessLevelSmooth(value);
-        if (value > 5) // more hacks for Yosemite (don't save really low values)
-            m_saved_value = value;
-        return true;
+        else
+        {
+            setBrightnessLevelSmooth(value);
+            if (value > 5) // more hacks for Yosemite (don't save really low values)
+                m_saved_value = value;
+        }
     }
     else if (gIODisplayParametersCommitKey->isEqualTo(paramName))
     {
@@ -568,9 +585,11 @@ bool IntelBacklightPanel::doIntegerSet(OSDictionary* params, const OSSymbol* par
         // save to BIOS nvram via ACPI
         if (m_hasSaveMethod)
             savePrebootBrightnessLevel(m_config.m_backlightLevels[index]);
-        return true;
     }
-    return false;
+
+    IORecursiveLockUnlock(m_lock);
+
+    return result;
 }
 
 
@@ -584,6 +603,8 @@ bool IntelBacklightPanel::doUpdate( void )
 {
     //DebugLog("enter %s::%s()\n", this->getName(), __FUNCTION__);
     bool result = false;
+
+    IORecursiveLockLock(m_lock);
 
     OSDictionary* newDict = 0;
 	OSDictionary* allParams = OSDynamicCast(OSDictionary, m_display->copyProperty(gIODisplayParametersKey));
@@ -637,6 +658,8 @@ bool IntelBacklightPanel::doUpdate( void )
 
         result = true;
 	}
+
+    IORecursiveLockUnlock(m_lock);
 
     //DebugLog("exit %s::%s()\n", this->getName(), __FUNCTION__);
     return result;

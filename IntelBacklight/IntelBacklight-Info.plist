@@ -110,6 +110,8 @@
 				<integer>2777</integer>
 				<key>PCHLInit</key>
 				<integer>-1</integer>
+				<key>LEVWInit</key>
+				<integer>3221225472</integer>
 				<key>Options</key>
 				<integer>0</integer>
 				<key>BacklightMin</key>
