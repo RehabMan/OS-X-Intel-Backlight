@@ -193,8 +193,8 @@ void IntelBacklightHandler2::initBacklight(BacklightConfig* config)
             // Default value for m_pchlInit is 0xC0000000...
             // This 0xC value comes from looking what OS X initializes this
             // register to after display sleep (using ACPIDebug/ACPIPoller)
-            if (m_config->m_pchlInit)
-                REG32_WRITE(LEVW, m_config->m_pchlInit);
+            if (m_config->m_levwInit)
+                REG32_WRITE(LEVW, m_config->m_levwInit);
             if (!m_config->m_pwmMax)
                 m_config->m_pwmMax = m_levx>>16;
             if (!m_config->m_pwmMax)
