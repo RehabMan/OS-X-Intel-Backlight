@@ -251,6 +251,8 @@ void IntelBacklightHandler2::setBacklightLevel(UInt32 level)
     {
         case kFBTypeHaswellBroadwell:
         {
+            if ((m_config->m_options & kWriteLEVWOnSet) && m_config->m_levwInit)
+                REG32_WRITE(LEVW, m_config->m_levwInit);
             // store new backlight level and restore max
             REG32_WRITE(LEVX, (m_config->m_pwmMax<<16) | level);
             break;

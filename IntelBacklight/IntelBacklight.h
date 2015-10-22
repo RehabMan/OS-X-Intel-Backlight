@@ -34,6 +34,8 @@
 #include "BacklightHandler.h"
 #include "IntelBacklightHandler.h"
 
+enum { kDisableSmooth = 0x01, kWriteLEVWOnSet = 0x02, };
+
 class EXPORT IntelBacklightPanel : public IODisplayParameterHandler
 {
     OSDeclareDefaultStructors(IntelBacklightPanel)
@@ -80,7 +82,6 @@ private:
     PRIVATE void setBrightnessLevelSmooth(UInt32 level);
 	PRIVATE UInt32 findIndexForLevel(UInt32 BCLvalue);
     
-    enum { kDisableSmooth = 0x01, };
     BacklightConfig m_config;
 
     int m_value;  // osx value
