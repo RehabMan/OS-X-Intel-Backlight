@@ -188,9 +188,12 @@ bool IntelBacklightPanel::start(IOService* provider)
     // wait for backlight handler... will call setBacklightHandler during this wait
     DebugLog("Waiting for BacklightHandler\n");
     waitForService(serviceMatching("BacklightHandler2"));
-    if (!m_handler)
+    if (!m_handler || m_config.m_nLevels < 2)
     {
-        AlwaysLog("backlight handler never showed up.\n");
+        if (!m_handler)
+            AlwaysLog("backlight handler never showed up.\n");
+        else
+            AlwaysLog("backlight handler invalid configuration (nLevels=%d)\n", m_config.m_nLevels);
         stop(provider);
         IORecursiveLockUnlock(m_lock);
         return false;
@@ -325,7 +328,7 @@ bool IntelBacklightPanel::loadConfiguration(OSDictionary* config)
         }
         m_config.m_nLevels = count;
     }
-    return true;
+    return m_config.m_nLevels >= 2;
 }
 
 OSObject* IntelBacklightPanel::translateEntry(OSObject* obj)
@@ -489,6 +492,8 @@ UInt32 IntelBacklightPanel::indexForLevel(UInt32 value, UInt32* rem)
 
 UInt32 IntelBacklightPanel::levelForIndex(UInt32 index)
 {
+    // not really possible, but quiets the static analyzer...
+    if (m_max-m_min <= 0) return 0;
     UInt32 value = ((index-m_min) * kBacklightLevelMax + (m_max-m_min)/2) / (m_max-m_min);
     return value;
 }
