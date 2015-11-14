@@ -293,7 +293,8 @@
 				GCC_PREFIX_HEADER = "IntelBacklight/IntelBacklight-Prefix.pch";
 				INFOPLIST_FILE = "IntelBacklight/IntelBacklight-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				MODULE_NAME = com.darwin.driver.IntelBacklight;
+				MODULE_NAME = com.rehabman.driver.IntelBacklight;
+				MODULE_VERSION = 1.0.5;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -307,7 +308,8 @@
 				GCC_PREFIX_HEADER = "IntelBacklight/IntelBacklight-Prefix.pch";
 				INFOPLIST_FILE = "IntelBacklight/IntelBacklight-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				MODULE_NAME = com.darwin.driver.IntelBacklight;
+				MODULE_NAME = com.rehabman.driver.IntelBacklight;
+				MODULE_VERSION = 1.0.5;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
