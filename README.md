@@ -71,7 +71,7 @@ Method (RMCF)
     Return(Package()
     {
         "PWMMax", 0,
-        "PCHLInit", -1,  // some computers will need this zero
+        "PCHLInit", Ones,  // some computers will need this zero
         "LEVWInit", 0xC0000000, // you can use 0 to skip writing LEVW
         "Options", 0,
         "BacklightMin", 25,
