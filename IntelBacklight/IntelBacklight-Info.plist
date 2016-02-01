@@ -73,7 +73,7 @@
 			<key>Configuration</key>
 			<dict>
 				<key>PWMMax</key>
-				<integer>1808</integer>
+				<integer>0</integer>
 				<key>PCHLInit</key>
 				<integer>-1</integer>
 				<key>Options</key>
@@ -107,13 +107,13 @@
 			<key>Configuration</key>
 			<dict>
 				<key>PWMMax</key>
-				<integer>2777</integer>
+				<integer>0</integer>
 				<key>PCHLInit</key>
 				<integer>-1</integer>
 				<key>LEVWInit</key>
 				<integer>3221225472</integer>
 				<key>Options</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>BacklightMin</key>
 				<integer>25</integer>
 				<key>BacklightMax</key>

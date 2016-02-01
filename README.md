@@ -73,7 +73,7 @@ Method (RMCF)
         "PWMMax", 0,
         "PCHLInit", Ones,  // some computers will need this zero
         "LEVWInit", 0xC0000000, // you can use 0 to skip writing LEVW
-        "Options", 0,
+        "Options", 2,
         "BacklightMin", 25,
         "BacklightMax", 0xad9,
         "BacklightLevelsScale", 0xad9,
@@ -171,9 +171,27 @@ https://bitbucket.org/RehabMan/os-x-intel-backlight
 
 ### Change Log:
 
+2016-02-01 v1.0.6
+
+- change default for Options (Haswell only) and PWMMax (both Haswell and Ivy/Sandy)
+
+- add device-id for missing Intel graphics device-ids (8086:0d26, 8086:0a26)
+
+2015-11-14 v1.0.5
+
+- add Options bit 1 (kWriteLEVWOnSet) to fix problems with wake up from hibernation
+
+2015-10-19 v1.0.3
+
+- fix potential race condition at startup
+
+- add support for Haswell device 8086:0a2e
+
+- fix problems with LEVW (typo/bug)
+
 2015-09-17 v1.0.0
 
-- Initial commit based on ACPIBaclight project
+- Initial commit based on ACPIBacklight project
 
 
 ### History
