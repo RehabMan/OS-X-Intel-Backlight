@@ -196,8 +196,8 @@ bool IntelBacklightPanel::start(IOService* provider)
             AlwaysLog("backlight handler never showed up.\n");
         else
             AlwaysLog("backlight handler invalid configuration (nLevels=%d)\n", m_config.m_nLevels);
-        stop(provider);
         IORecursiveLockUnlock(m_lock);
+        stop(provider);
         return false;
     }
 

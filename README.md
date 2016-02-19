@@ -171,6 +171,10 @@ https://bitbucket.org/RehabMan/os-x-intel-backlight
 
 ### Change Log:
 
+2016-02-20 v1.0.8
+
+- fix crash when ACPIBacklight.kext is installed and starts prior to IntelBacklight.kext
+
 2016-02-19 v1.0.7
 
 - add Skylake integrated graphics
