@@ -185,9 +185,11 @@ bool IntelBacklightPanel::start(IOService* provider)
     UInt32 value = loadFromNVRAM();
     DebugLog("loadFromNVRAM returns %d\n", value);
 
+    //REVIEW: 9 second wait here... probably more than needed...
     // wait for backlight handler... will call setBacklightHandler during this wait
     DebugLog("Waiting for BacklightHandler\n");
-    waitForService(serviceMatching("BacklightHandler2"));
+    IOService* service = waitForMatchingService(serviceMatching("BacklightHandler2"), 9000UL*1000UL*1000UL);
+    OSSafeRelease(service);
     if (!m_handler || m_config.m_nLevels < 2)
     {
         if (!m_handler)
