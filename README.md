@@ -171,6 +171,12 @@ https://bitbucket.org/RehabMan/os-x-intel-backlight
 
 ### Change Log:
 
+2016-02-19 v1.0.7
+
+- add Skylake integrated graphics
+
+- change timeouts for IntelBacklightPanel and BacklightHandler2 at startup
+
 2016-02-01 v1.0.6
 
 - change default for Options (Haswell only) and PWMMax (both Haswell and Ivy/Sandy)
