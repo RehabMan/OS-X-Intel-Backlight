@@ -36,6 +36,14 @@
 
 enum { kDisableSmooth = 0x01, kWriteLEVWOnSet = 0x02, };
 
+#define MS_TO_NS(ms) (1000ULL * 1000ULL * (ms))
+
+extern "C"
+{
+kern_return_t IntelBacklight_Start(kmod_info_t*, void*);
+kern_return_t IntelBacklight_Stop(kmod_info_t*, void*);
+}
+
 class EXPORT IntelBacklightPanel : public IODisplayParameterHandler
 {
     OSDeclareDefaultStructors(IntelBacklightPanel)
@@ -70,8 +78,11 @@ private:
     
     IOTimerEventSource* m_smoothTimer;
     IOCommandGate* m_cmdGate;
-    IORecursiveLock* m_lock;
     int m_smoothIndex;
+
+    static IORecursiveLock* m_lock;
+    friend kern_return_t IntelBacklight_Start(kmod_info_t*, void*);
+    friend kern_return_t IntelBacklight_Stop(kmod_info_t*, void*);
 
     bool m_hasSaveMethod;
     PRIVATE void savePrebootBrightnessLevel(UInt32 level);

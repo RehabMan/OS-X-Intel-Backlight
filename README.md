@@ -171,6 +171,12 @@ https://bitbucket.org/RehabMan/os-x-intel-backlight
 
 ### Change Log:
 
+2016-04-13 v1.0.9
+
+- Attempting to fix a race condition between IntelBacklight and IntelBacklightHandler
+
+- increase timeout between the two components from 9 seconds to 15 seconds
+
 2016-02-20 v1.0.8
 
 - fix crash when ACPIBacklight.kext is installed and starts prior to IntelBacklight.kext

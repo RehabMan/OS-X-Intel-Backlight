@@ -238,7 +238,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				"LLVM_LTO[arch=x86_64]" = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				MODULE_VERSION = 1.0.8;
+				MODULE_VERSION = 1.0.9;
 				OTHER_CFLAGS = "-fno-stack-protector";
 				"OTHER_LDFLAGS[arch=x86_64]" = "-dead_strip";
 				SDKROOT = macosx10.8;
@@ -276,7 +276,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				"LLVM_LTO[arch=x86_64]" = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				MODULE_VERSION = 1.0.8;
+				MODULE_VERSION = 1.0.9;
 				OTHER_CFLAGS = "-fno-stack-protector";
 				"OTHER_LDFLAGS[arch=x86_64]" = "-dead_strip";
 				SDKROOT = macosx10.8;
@@ -294,6 +294,8 @@
 				INFOPLIST_FILE = "IntelBacklight/IntelBacklight-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				MODULE_NAME = com.rehabman.driver.IntelBacklight;
+				MODULE_START = IntelBacklight_Start;
+				MODULE_STOP = IntelBacklight_Stop;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -308,6 +310,8 @@
 				INFOPLIST_FILE = "IntelBacklight/IntelBacklight-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				MODULE_NAME = com.rehabman.driver.IntelBacklight;
+				MODULE_START = IntelBacklight_Start;
+				MODULE_STOP = IntelBacklight_Stop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

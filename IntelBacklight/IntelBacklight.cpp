@@ -73,6 +73,33 @@ struct SmoothData smoothData[] =
 #define m_max   (m_config.m_nLevels-1)
 #define m_min   (0)
 
+IORecursiveLock* IntelBacklightPanel::m_lock;
+
+extern "C"
+{
+
+__attribute__((visibility("hidden")))
+kern_return_t IntelBacklight_Start(kmod_info_t* ki, void * d)
+{
+    if (!(IntelBacklightPanel::m_lock = IORecursiveLockAlloc()))
+        return KERN_FAILURE;
+
+    return KERN_SUCCESS;
+}
+
+__attribute__((visibility("hidden")))
+kern_return_t IntelBacklight_Stop(kmod_info_t* ki, void * d)
+{
+    if (IntelBacklightPanel::m_lock)
+    {
+        IORecursiveLockFree(IntelBacklightPanel::m_lock);
+        IntelBacklightPanel::m_lock = NULL;
+    }
+    return KERN_SUCCESS;
+}
+
+} // extern "C"
+
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 #pragma mark -
 #pragma mark IOService functions override
@@ -89,8 +116,7 @@ bool IntelBacklightPanel::init()
     m_workSource = NULL;
     m_smoothTimer = NULL;
     m_cmdGate = NULL;
-    m_lock = NULL;
-    
+
     memset(&m_config, 0, sizeof(m_config));
 
 	return super::init();
@@ -134,10 +160,6 @@ bool IntelBacklightPanel::start(IOService* provider)
         return false;
     }
 
-    m_lock = IORecursiveLockAlloc();
-    if (!m_lock)
-        return false;
-    
     m_hasSaveMethod = (kIOReturnSuccess == m_provider->validateObject("SAVE"));
 
     // add interrupt source for delayed actions...
@@ -178,17 +200,17 @@ bool IntelBacklightPanel::start(IOService* provider)
 
     IORecursiveLockLock(m_lock);
 
-    // make the service available for clients like 'ioio' (and backlight handler!)
-    registerService();
-
     // load and set default brightness level
     UInt32 value = loadFromNVRAM();
     DebugLog("loadFromNVRAM returns %d\n", value);
 
-    //REVIEW: 9 second wait here... probably more than needed...
+    // make the service available for clients like 'ioio' (and backlight handler!)
+    registerService();
+
+    //REVIEW: 15 second wait here... probably more than needed...
     // wait for backlight handler... will call setBacklightHandler during this wait
     DebugLog("Waiting for BacklightHandler\n");
-    IOService* service = waitForMatchingService(serviceMatching("BacklightHandler2"), 9000UL*1000UL*1000UL);
+    IOService* service = waitForMatchingService(serviceMatching("BacklightHandler2"), MS_TO_NS(15000));
     OSSafeRelease(service);
     if (!m_handler || m_config.m_nLevels < 2)
     {
@@ -196,8 +218,11 @@ bool IntelBacklightPanel::start(IOService* provider)
             AlwaysLog("backlight handler never showed up.\n");
         else
             AlwaysLog("backlight handler invalid configuration (nLevels=%d)\n", m_config.m_nLevels);
-        IORecursiveLockUnlock(m_lock);
+
+        IOSleep(5000); //REVIEW: in case of race condition between backlight handler (ugly!)
+
         stop(provider);
+        IORecursiveLockUnlock(m_lock);
         return false;
     }
 
@@ -258,12 +283,6 @@ void IntelBacklightPanel::stop(IOService* provider)
             m_cmdGate->release();
             m_cmdGate = NULL;
         }
-    }
-
-    if (m_lock)
-    {
-        IORecursiveLockFree(m_lock);
-        m_lock = NULL;
     }
 
     m_provider = NULL;
@@ -839,7 +858,7 @@ UInt32 IntelBacklightPanel::loadFromNVRAM(void)
         // probably booting w/ Clover
         if (OSDictionary* matching = serviceMatching("IODTNVRAM"))
         {
-            nvram = waitForMatchingService(matching, 1000000000ULL * 15);
+            nvram = waitForMatchingService(matching, MS_TO_NS(15000));
             matching->release();
         }
     }
