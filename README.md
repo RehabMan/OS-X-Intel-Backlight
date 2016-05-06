@@ -171,6 +171,10 @@ https://bitbucket.org/RehabMan/os-x-intel-backlight
 
 ### Change Log:
 
+2016-05-06 v1.0.10
+
+- Add 8086:191b (Skylake graphics)
+
 2016-04-13 v1.0.9
 
 - Attempting to fix a race condition between IntelBacklight and IntelBacklightHandler
