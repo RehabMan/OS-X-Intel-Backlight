@@ -105,7 +105,7 @@ bool IntelBacklightHandler2::start(IOService* provider)
     // the "pilot error" case here is that the person did not patch for PNLF
 
     // setup for direct access
-    IOService* service = waitForMatchingService(serviceMatching("IntelBacklightPanel"), MS_TO_NS(15000));
+    IOService* service = waitForMatchingService(serviceMatching("IntelBacklightPanel"));
     if (!service)
     {
         AlwaysLog("IntelBacklightPanel not found (PNLF patch missing?)... aborting\n");

@@ -80,7 +80,7 @@ Method (RMCF)
         "BacklightLevels", Package()
         {
             Package(){}, // empty package indicates array follows (instead of dictionary)
-            0,\n
+            0,
             35, 39, 44, 50,
             58, 67, 77, 88,
             101, 115, 130, 147,
@@ -170,6 +170,10 @@ https://bitbucket.org/RehabMan/os-x-intel-backlight
 
 
 ### Change Log:
+
+2017-02-06 v1.0.11
+
+- Change timeout in waitForMatchingService to "forever" (reality is 60sec).  This fixes problems with slow computers.
 
 2016-05-06 v1.0.10
 

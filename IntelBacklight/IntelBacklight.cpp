@@ -210,7 +210,7 @@ bool IntelBacklightPanel::start(IOService* provider)
     //REVIEW: 15 second wait here... probably more than needed...
     // wait for backlight handler... will call setBacklightHandler during this wait
     DebugLog("Waiting for BacklightHandler\n");
-    IOService* service = waitForMatchingService(serviceMatching("BacklightHandler2"), MS_TO_NS(15000));
+    IOService* service = waitForMatchingService(serviceMatching("BacklightHandler2"));
     OSSafeRelease(service);
     if (!m_handler || m_config.m_nLevels < 2)
     {
