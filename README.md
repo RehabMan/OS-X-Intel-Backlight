@@ -12,7 +12,7 @@ The typical "Backlight Fix" patch or AddPNLF_1000000 in Clover will do the trick
 
 Downloads are available on bitbucket:
 
-https://bitbucket.org/RehabMan/os-x-intel-backlight/downloads
+https://bitbucket.org/RehabMan/os-x-intel-backlight/downloads/
 
 
 ### Feedback:
